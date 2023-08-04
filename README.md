@@ -8,6 +8,7 @@ Just download the repository, and the unzip mnist2500_X.zip or put feature file 
 
 ```bash
 python tsne_torch.py --xfile mnist2500_X.txt --yfile mnist2500_labels.txt --cuda 0
+python tsne_torch.py --xfile FSRL_producedby_X.txt --yfile FSRL_producedby_labels.txt --cuda 0
 ```
 2.run with cuda support 
 ```bash

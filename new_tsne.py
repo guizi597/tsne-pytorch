@@ -24,23 +24,21 @@ method = 'exact'  # ['barnes_hut', 'exact']
 font_size = 40
 node_size = 80
 legend_size = 32
-plot_only = 2200
+plot_only = 9700
 
 my_x_ticks = np.arange(-70, 80, 35)
 my_y_ticks = np.arange(-70, 80, 35)
 
-
+font = dict(family='times new roman', size=40)
 
 
 print('lr:{}, init:{}'.format(lr, init))
 
 model_lst = ["FSRL", "FAAN", "CIAN", "MSRMN"]
-# task_relation = "teamcoach"
+task_relation = "teamcoach"
 # task_relation = "animalsuchasinvertebrate"
-task_relation = "producedby"
-
+# task_relation = "producedby"
 plt.figure(figsize=(256, 256))
-plt.savefig(r"images/" + "animalsuchasinvertebrate_ALL0728.png", dpi=50, bbox_inches="tight")
 plt.rcParams['figure.figsize'] = (25.6, 25.6)
 ig, axs = plt.subplots(2, 2)
 ax1, ax2, ax3, ax4 = axs.flatten()
@@ -68,8 +66,8 @@ tsne1 = TSNE(learning_rate=lr, init=init, method=method).fit_transform(X[-1000:-
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax1.scatter(tsne1[:, 0], tsne1[:, 1], node_size, labels, cmap=cm)
-ax1.set_title(task_relation + "(" + model_name + ")", fontsize=font_size)
-ax1.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size})
+ax1.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+ax1.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
 # x_major_locator = MultipleLocator(margin)
@@ -85,7 +83,8 @@ ax1.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive
 
 ax1.set_xticks(my_x_ticks)
 ax1.set_yticks(my_y_ticks)
-
+ax1.set_xticklabels(my_x_ticks, fontdict=font)
+ax1.set_yticklabels(my_y_ticks, fontdict=font)
 # 设置刻度的参数
 ax1.tick_params(labelsize=font_size, length=10)
 
@@ -109,9 +108,8 @@ tsne2 = TSNE(learning_rate=lr, init=init, method=method).fit_transform(X[plot_on
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax2.scatter(tsne2[:, 0], tsne2[:, 1], node_size, labels, cmap=cm)
-ax2.set_title(task_relation + "(" + model_name + ")", fontsize=font_size)
-legend2 = ax2.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size})
-legend2.legendHandles[0]._sizes = [node_size]  # 设置圆点大小为30
+ax2.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+legend2 = ax2.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
 # x_major_locator = MultipleLocator(margin)
@@ -127,7 +125,8 @@ legend2.legendHandles[0]._sizes = [node_size]  # 设置圆点大小为30
 
 ax2.set_xticks(my_x_ticks)
 ax2.set_yticks(my_y_ticks)
-
+ax2.set_xticklabels(my_x_ticks, fontdict=font)
+ax2.set_yticklabels(my_y_ticks, fontdict=font)
 # 设置刻度的参数
 ax2.tick_params(labelsize=font_size, length=10)
 
@@ -151,8 +150,8 @@ tsne3 = TSNE(learning_rate=lr, init=init, method=method).fit_transform(X[plot_on
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax3.scatter(tsne3[:, 0], tsne3[:, 1], node_size, labels, cmap=cm)
-ax3.set_title(task_relation + "(" + model_name + ")", fontsize=font_size)
-ax3.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size})
+ax3.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+ax3.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
 # x_major_locator = MultipleLocator(margin)
@@ -168,6 +167,8 @@ ax3.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive
 
 ax3.set_xticks(my_x_ticks)
 ax3.set_yticks(my_y_ticks)
+ax3.set_xticklabels(my_x_ticks, fontdict=font)
+ax3.set_yticklabels(my_y_ticks, fontdict=font)
 
 # 设置刻度的参数
 ax3.tick_params(labelsize=font_size, length=10)
@@ -192,8 +193,8 @@ tsne4 = TSNE(learning_rate=lr, init=init, method='barnes_hut').fit_transform(X[p
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax4.scatter(tsne4[:, 0], tsne4[:, 1], node_size, labels, cmap=cm)
-ax4.set_title(task_relation + "(" + model_name + ")", fontsize=font_size)
-ax4.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size})
+ax4.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+ax4.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
 # x_major_locator = MultipleLocator(margin)
@@ -208,10 +209,13 @@ ax4.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive
 # ax4.set_xlim(lim[0], lim[1])
 ax4.set_xticks(np.arange(-70, 80, 35))
 ax4.set_yticks(np.arange(-70, 85, 35))
+ax4.set_xticklabels(my_x_ticks, fontdict=font)
+ax4.set_yticklabels(my_y_ticks, fontdict=font)
 
 # 设置刻度的参数
 ax4.tick_params(labelsize=font_size, length=10)
 
+plt.savefig(r"img_0804/" + task_relation + "_ALL0804.png", dpi=100, bbox_inches="tight")
 plt.show()
 print("Complete! Consume time is {}".format(time.perf_counter() - cur_time))
 
