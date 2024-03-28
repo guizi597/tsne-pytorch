@@ -34,7 +34,7 @@ font = dict(family='times new roman', size=40)
 
 print('lr:{}, init:{}'.format(lr, init))
 
-model_lst = ["FSRL", "FAAN", "CIAN", "MSRMN"]
+model_lst = ["FSRL", "FAAN", "CIAN", "MuS-Net"]
 task_relation = "teamcoach"
 # task_relation = "animalsuchasinvertebrate"
 # task_relation = "producedby"
@@ -59,14 +59,14 @@ print("get choice from args", opt)
 x_file = opt.x_file
 y_file = opt.y_file
 X = np.loadtxt(x_file)
-labels = np.loadtxt(y_file).tolist()[-1000:-1]
-tsne1 = TSNE(learning_rate=lr, init=init, method=method).fit_transform(X[-1000:-1,:])
+labels = np.loadtxt(y_file).tolist()[plot_only:]
+tsne1 = TSNE(learning_rate=lr, init=init, method=method).fit_transform(X[plot_only:,:])
 
 # 使用PCA 进行降维处理
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax1.scatter(tsne1[:, 0], tsne1[:, 1], node_size, labels, cmap=cm)
-ax1.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+ax1.set_title("(a) " + task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
 ax1.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
@@ -108,7 +108,7 @@ tsne2 = TSNE(learning_rate=lr, init=init, method=method).fit_transform(X[plot_on
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax2.scatter(tsne2[:, 0], tsne2[:, 1], node_size, labels, cmap=cm)
-ax2.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+ax2.set_title("(b) " + task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
 legend2 = ax2.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
@@ -150,7 +150,7 @@ tsne3 = TSNE(learning_rate=lr, init=init, method=method).fit_transform(X[plot_on
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax3.scatter(tsne3[:, 0], tsne3[:, 1], node_size, labels, cmap=cm)
-ax3.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+ax3.set_title("(c) " + task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
 ax3.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
@@ -193,7 +193,7 @@ tsne4 = TSNE(learning_rate=lr, init=init, method='barnes_hut').fit_transform(X[p
 # pca = PCA().fit_transform(X)
 
 t_scatter = ax4.scatter(tsne4[:, 0], tsne4[:, 1], node_size, labels, cmap=cm)
-ax4.set_title(task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
+ax4.set_title("(d) " + task_relation + "(" + model_name + ")", fontsize=font_size, fontproperties=font)
 ax4.legend(handles=t_scatter.legend_elements()[0], labels=["Negative", "Positive"], loc="lower right", prop={'size': legend_size,'family':'times new roman'})
 
 # # 把x轴的刻度间隔设置为25
